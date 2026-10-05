@@ -1,0 +1,69 @@
+# staged-agents
+
+A Claude Code **skill** for building or running a reliable multi-agent task using the
+**loop → chain → network → graph** ladder. It starts at the cheapest stage and climbs
+only when a measured failure justifies it.
+
+Use it when you want to:
+
+- add reflection / self-review to an AI step,
+- set up a review or analysis pipeline,
+- coordinate specialist agents, or
+- give agents shared persistent memory.
+
+This repo is both a **plugin** and a **plugin marketplace**, so you can install it the
+easy way (via `/plugin`) or just drop the skill folder into place manually.
+
+---
+
+## Install as a plugin (recommended)
+
+```bash
+# 1. Add this repo as a marketplace
+claude plugin marketplace add aelhadii/staged-agents
+
+# 2. Install the plugin
+claude plugin install staged-agents@staged-agents
+```
+
+Or from inside a Claude Code session:
+
+```
+/plugin marketplace add aelhadii/staged-agents
+/plugin install staged-agents@staged-agents
+```
+
+Update later with `claude plugin update staged-agents@staged-agents`.
+
+## Install as a plain skill (manual)
+
+The skill lives at [`skills/staged-agents/`](skills/staged-agents). Copy it into your
+Claude Code skills directory:
+
+```bash
+git clone https://github.com/aelhadii/staged-agents /tmp/staged-agents
+cp -R /tmp/staged-agents/skills/staged-agents ~/.claude/skills/staged-agents
+```
+
+(Or symlink it, and `git pull` to update.) Claude Code auto-discovers any skill in
+`~/.claude/skills/`.
+
+---
+
+## What's inside
+
+```
+.
+├── .claude-plugin/
+│   ├── plugin.json         # plugin manifest
+│   └── marketplace.json    # marketplace manifest (source ".")
+└── skills/
+    └── staged-agents/
+        ├── SKILL.md        # the procedure
+        ├── references/     # contract, graph schema, promotion rules
+        └── rubrics/        # correctness, security review rubrics
+```
+
+## License
+
+MIT — see [LICENSE](LICENSE).

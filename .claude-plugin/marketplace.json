@@ -1,0 +1,16 @@
+{
+  "name": "staged-agents",
+  "description": "Marketplace hosting the staged-agents skill/plugin.",
+  "owner": {
+    "name": "aelhadii"
+  },
+  "version": "0.1.0",
+  "plugins": [
+    {
+      "name": "staged-agents",
+      "source": ".",
+      "description": "Build or run a reliable multi-agent task using the loop→chain→network→graph ladder.",
+      "version": "0.1.0"
+    }
+  ]
+}

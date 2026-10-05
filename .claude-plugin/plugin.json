@@ -1,0 +1,19 @@
+{
+  "name": "staged-agents",
+  "description": "Build or run a reliable multi-agent task using the loop→chain→network→graph ladder. Starts at the cheapest stage and climbs only when a measured failure justifies it.",
+  "version": "0.1.0",
+  "author": {
+    "name": "aelhadii"
+  },
+  "repository": "https://github.com/aelhadii/staged-agents",
+  "homepage": "https://github.com/aelhadii/staged-agents",
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "multi-agent",
+    "orchestration",
+    "reflection",
+    "review-pipeline",
+    "agents"
+  ]
+}
