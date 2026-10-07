@@ -24,8 +24,3 @@ catch an error class the correctness reviewer optimizes away.
 - Name the threat (what an attacker does) and the impact.
 - Cite the location (`file:line`) and a concrete trigger (malicious input shape).
 - State severity and the minimal fix.
-
-## Scope note
-
-This repo parses stolen-malware logs: untrusted, adversarial input is the norm,
-not the exception. Treat every external file, archive, and field as hostile.

@@ -33,7 +33,8 @@ Or from inside a Claude Code session:
 /plugin install staged-agents@staged-agents
 ```
 
-Update later with `claude plugin update staged-agents@staged-agents`.
+Update later with `claude plugin marketplace update staged-agents` followed by
+`claude plugin update staged-agents@staged-agents`, then restart Claude Code to apply it.
 
 ## Install as a plain skill (manual)
 
@@ -41,12 +42,16 @@ The skill lives at [`skills/staged-agents/`](skills/staged-agents). Copy it into
 Claude Code skills directory:
 
 ```bash
-git clone https://github.com/aelhadii/staged-agents /tmp/staged-agents
-cp -R /tmp/staged-agents/skills/staged-agents ~/.claude/skills/staged-agents
+git clone https://github.com/aelhadii/staged-agents ~/src/staged-agents
+mkdir -p ~/.claude/skills
+cp -R ~/src/staged-agents/skills/staged-agents ~/.claude/skills/
 ```
 
-(Or symlink it, and `git pull` to update.) Claude Code auto-discovers any skill in
-`~/.claude/skills/`.
+To update, run `git -C ~/src/staged-agents pull` and the `cp` line again. (Or symlink
+the skill folder instead of copying it, and `git pull` to update.) Keep the clone out of
+`/tmp`, which macOS and many Linux setups clean up. Claude Code auto-discovers any skill
+in `~/.claude/skills/`; if that directory did not exist when your session started,
+restart Claude Code. Use one install method, not both, or the skill is loaded twice.
 
 ---
 
@@ -56,7 +61,7 @@ cp -R /tmp/staged-agents/skills/staged-agents ~/.claude/skills/staged-agents
 .
 ├── .claude-plugin/
 │   ├── plugin.json         # plugin manifest
-│   └── marketplace.json    # marketplace manifest (source ".")
+│   └── marketplace.json    # marketplace manifest (source "./")
 └── skills/
     └── staged-agents/
         ├── SKILL.md        # the procedure
