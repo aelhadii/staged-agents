@@ -1,7 +1,7 @@
 {
   "name": "staged-agents",
   "description": "Build or run a reliable multi-agent task using the loop→chain→network→graph ladder. Starts at the cheapest stage and climbs only when a measured failure justifies it.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "aelhadii"
   },
