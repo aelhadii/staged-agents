@@ -14,6 +14,8 @@ Use it when you want to:
 This repo is both a **plugin** and a **plugin marketplace**, so you can install it the
 easy way (via `/plugin`) or just drop the skill folder into place manually.
 
+> **Current version: v0.1.1** — the commands below always fetch the latest release.
+
 ---
 
 ## Install as a plugin (recommended)
