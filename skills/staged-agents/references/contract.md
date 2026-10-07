@@ -26,10 +26,11 @@ Every agent in every stage takes the same `Input` and returns the same
     "concrete grounding: test output, file:line, a graph edge, a source doc"
   ],
   "satisfied": true,
-  "confidence": 0.0,
+  "confidence": 0.8,
   "provenance": {
     "task": "the task this answers",
     "inputs": ["what went in"],
+    "revision": "the git commit the inputs were read at",
     "run_id": "unique id for this execution"
   }
 }
@@ -40,10 +41,34 @@ Every agent in every stage takes the same `Input` and returns the same
 - **evidence** — must cite something real. "might not handle edge cases" is not
   evidence; "line 12 crashes on an empty list, violating rubric item 3" is.
 - **satisfied** — the Loop's stopping signal. Set by the critic step, not the
-  generator (separate the two roles).
-- **confidence** — used by Network's merge and by the Promotion check.
+  generator (separate the two roles). `true` only when there is **no blocking
+  finding** and **no verify failure that was not in the baseline**.
+- **confidence** — informational, 0.0–1.0. It may rank findings; it **never
+  overrides verification**.
 - **provenance** — what makes any output traceable back to its cause. This is
-  the field that, at Stage 4, becomes graph edges.
+  the field that, at Stage 4, becomes graph edges. `revision` tells a later run
+  whether a stored finding may be stale.
+
+## Severity — one scale for every rubric and role
+
+| Severity | Means |
+|----------|-------|
+| `blocking` | wrong, breaks a stated requirement, adds a new verify failure, or exploitable |
+| `should-fix` | a real defect that need not block — e.g. pre-existing, or outside the task |
+| `nit` | style or clarity |
+
+## Findings (review roles)
+
+A review role returns `result` as an array of findings:
+
+```json
+{ "location": "src/x.rs:12", "claim": "unwraps a None on empty input",
+  "trigger": "parse(\"\")", "severity": "blocking", "status": "unverified" }
+```
+
+`trigger` is the input or command that shows the defect. `status` stays
+`unverified` until the Network's verify step marks it `confirmed` or
+`refuted`. Add any field the rubric asks for (e.g. `evidence`, `fix`).
 
 ## Why typed, not prose
 
