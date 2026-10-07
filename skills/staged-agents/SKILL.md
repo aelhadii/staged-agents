@@ -39,8 +39,9 @@ and record:
 - **Review rules** — read `CLAUDE.md` / `AGENTS.md` if present; treat their
   constraints as hard rubric items (e.g. output-format invariants).
 - **Persistence store** (only needed for Stage 4):
-  prefer the `kr` MCP if available (scope by project), else fall back to a
-  local `.staged-agents/findings.json` at the repo root.
+  prefer a persistent memory/knowledge MCP server if one is available
+  (scope it by project), else fall back to a local
+  `.staged-agents/findings.json` at the repo root.
 
 State what you found in one line before proceeding.
 

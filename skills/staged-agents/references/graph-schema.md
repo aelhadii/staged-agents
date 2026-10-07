@@ -42,8 +42,8 @@ fact can be traced to its source and its prior versions.
 
 ## Store backends
 
-- **`kr` MCP** (preferred when present): nodes → entries, edges → links,
-  scope by project. Durable and cross-session by default.
+- **Memory/knowledge MCP** (preferred when present): map nodes → entries,
+  edges → links, scoped by project. Durable and cross-session by default.
 - **Local JSON** (`.staged-agents/findings.json`): a single array of Finding
   objects with `supersedes` by id. Good enough to start; the paper's own advice
   is "start simple: a shared JSON file, graduate to a graph when needed."
